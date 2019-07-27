@@ -1,0 +1,18 @@
+.create-form {
+  input.input {
+    display: inline-block;
+    width: 49.5%;
+    &[type = "file"]{
+      margin-right:1%;
+    }
+  }
+  p{
+    margin-top:4px;
+    margin-bottom:4px;
+  }
+  .button.disabled{
+    opacity:.7;
+    pointer-events:none;
+    cursor: not-allowed;
+  }
+}

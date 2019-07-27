@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "jsx": "react",
+    "jsxFactory": "h"
+  },
+  "include": [
+    "src",
+    "types/jsx.d.ts", "../AttachmentSystem.Store.SqlServer/SqlServerAttachmenBusinessExtensions.cs", "../AttachmentSystem.TokenProvider.Cookie/CookieAttachmentTokenProviderExtensions.cs", "../AttachmentSystem.Common/Models/Common/BusinessDecorator.cs", "../Attachment/BusinessProxy/BusinessDecoratorProviderExtensions.cs", "../AttachmentSystem.Common/Models/Attachment/AttachmentKeyModel.cs", "../AttachmentSystem.Common/Models/Business/PreserveTemporaryAttachmentModel.cs", "../AttachmentSystem.Common/Models/Business/GetAttachmentItemModel.cs", "../AttachmentSystem.Common/Models/Business/DeleteAttachmentItemModel.cs", "../AttachmentSystem.Common/Models/Business/AttachmentItemSearchModel.cs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,34 @@
+delete-comfirmation {
+  > attachment-popup > .modal > .modal-card {
+    > .modal-card-body {
+    }
+
+    > .modal-card-head {
+      padding: 5px;
+
+      .modal-card-title {
+        padding-left: 15px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-size: 18px !important;
+        font-weight: bold;
+      }
+    }
+  }
+
+  ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style-type: none;
+
+    b {
+      display: block;
+      margin-right: .5em;
+    }
+
+    li {
+      word-break: break-all;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+@import "../../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../../node_modules/bulma/sass/elements/button.sass";
+@import "../../../node_modules/bulma/sass/components/modal.sass";
+@import "../../../node_modules/bulma/sass/form/_all.sass";
+@import "../../../node_modules/bulma/sass/elements/table.sass";
+@import "../../../node_modules/bulma/sass/components/pagination.sass";
+
+:host {
+  display: block;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+.button.is-outlined {
+
+  &.is-primary {
+    fill: #00d1b2;
+
+    &:hover {
+      fill: white;
+    }
+  }
+
+  &.is-danger {
+    fill: #ff2b56;
+
+    &:hover {
+      fill: white;
+    }
+  }
+
+  &.is-info {
+    fill: #209cee;
+
+    &:hover {
+      fill: white;
+    }
+  }
+
+  &.is-link {
+    fill: #3273dc;
+
+    &:hover {
+      fill: white;
+    }
+  }
+
+  &.is-success {
+    fill: #23d160;
+
+    &:hover {
+      fill: white;
+    }
+  }
+}
+
+ attachment-popup > .modal > .modal-card {
+  > .modal-card-head, .modal-card-foot {
+    padding: 5px;
+  }
+}
+
+.attachment-core-input {
+
+
+  @keyframes spinner {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+
+    to {
+      -webkit-transform: rotate(359deg);
+    }
+  }
+
+  .spinner .svg-icon {
+    pointer-events: unset;
+    animation: spinner .6s linear infinite;
+  }
+
+  .svg-icon {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    position: static;
+  }
+
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: black;
+  }
+  position: relative;
+}

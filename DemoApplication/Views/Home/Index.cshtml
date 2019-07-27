@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a id="a23" >test</a>
+<h1 class="display-4">Welcome</h1>
+<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<script>
+    document.querySelector("#a23").addEventListener("click", function () {
+        fetch("https://localhost:44327/Attachment/Download?id=1")
+            .then(response => {
+                for (var pair of response.headers.entries()) {
+                    console.log(pair[0]+ ': '+ pair[1]);
+}
+                return response
+            });
+    });
+</script>

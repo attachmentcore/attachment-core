@@ -1,0 +1,223 @@
+﻿using AttachmentSystem.Common.Contracts;
+using AttachmentSystem.Common.Extensions;
+using AttachmentSystem.Common.Models.Attachment;
+using AttachmentSystem.Common.Models.Business;
+using AttachmentSystem.Models.AttachmentItem;
+using AttachmentSystem.Store.SqlServer.Context;
+using IRISAES.AttachmentModule.Contracts;
+using IRISAES.AttachmentModule.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace AttachmentSystem.Store.SqlServer.Businesses
+{
+    public class SqlServerAttachmenBusiness : IAttachmentBusiness
+    {
+        AttachmentDbContext _DbContext;
+        /// <summary>
+        /// Create SqlServerAttachmenBusiness based on given connection string 
+        /// </summary>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public static SqlServerAttachmenBusiness SqlServerAttachmenBusinessFactory(string connectionString)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AttachmentDbContext>();
+            optionsBuilder.UseSqlServer(connectionString);
+            var dbContext = new AttachmentDbContext(optionsBuilder.Options);
+            return new SqlServerAttachmenBusiness(dbContext);
+        }
+        public SqlServerAttachmenBusiness(AttachmentDbContext dbContext)
+        {
+            _DbContext = dbContext;
+        }
+
+        #region Methods
+        /// <summary>
+        /// Create new temporary attachment index by given token
+        /// </summary>
+        /// <param name="entityName"></param>
+        /// <param name="fieldName"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public AttachmentModel CreateAttachmentTemporarily(TemporaryAttachmentKeyModel model)
+        {
+            if (!model.EntityName.HasValue() || !model.FieldName.HasValue() || !model.Token.HasValue())
+                throw new ArgumentNullException();
+            var attachment = new Context.Attachment()
+            {
+                EntityName = model.EntityName,
+                FieldName = model.FieldName,
+                Token = model.Token
+            };
+
+            _DbContext.Attachments.Add(attachment).State = EntityState.Added;
+            _DbContext.SaveChanges();
+            return new AttachmentModel
+            {
+                AttachmentId = attachment.Id,
+                TotalCount = 0
+            };
+        }
+        public int PreserveAttachment(PreserveAttachmentModel model)
+        {
+            var attachment = _DbContext.Attachments
+                .SingleOrDefault(x => x.EntityName == model.EntityName &&
+                                      x.FieldName == model.FieldName &&
+                                      x.EntityId == model.EntityId);
+            if (attachment == null)
+                throw new NullReferenceException();
+            attachment.EntityId = model.EntityId;
+            _DbContext.SaveChanges();
+            return attachment.Id;
+        }
+        public AttachmentModel CreateAttachment(AttachmentKeyModel model)
+        {
+            if (!model.EntityName.HasValue() || !model.FieldName.HasValue() || !model.EntityId.HasValue())
+                throw new ArgumentNullException();
+            var attachment = new Context.Attachment()
+            {
+                EntityName = model.EntityName,
+                FieldName = model.FieldName,
+                EntityId = model.EntityId
+            };
+
+            _DbContext.Attachments.Add(attachment).State = EntityState.Added;
+            _DbContext.SaveChanges();
+            return new AttachmentModel
+            {
+                AttachmentId = attachment.Id,
+                TotalCount = 0
+            };
+        }
+        public AttachmentModel GetAttachmentId(AttachmentKeyModel model)
+        {
+            var attachment = _DbContext.Attachments.Where(x =>
+                x.EntityName == model.EntityName &&
+                x.FieldName == model.FieldName &&
+                x.EntityId == model.EntityId
+            )
+            .Select(x => new AttachmentModel
+            {
+                AttachmentId = x.Id,
+                TotalCount = x.AttachmentItems.Count()
+            }).FirstOrDefault();
+            return attachment;
+        }
+        public void DeleteAttachmentItem(DeleteAttachmentItemModel model)
+        {
+            _DbContext.AttachmentItems.RemoveRange(_DbContext.AttachmentItems
+                .Where(x => model.AttachmentItemId.Contains(x.Id) &&
+                            x.Attachment.EntityName == model.EntityName &&
+                            x.Attachment.FieldName == model.FieldName &&
+                            x.Attachment.EntityId == model.EntityId &&
+                            x.Attachment.Id == model.AttachmentId));
+            _DbContext.SaveChanges();
+        }
+        public AttachmentItemPagedList GetAllAttachmentItems(AttachmentItemSearchModel searchModel)
+        {
+            var totalCount = _DbContext.AttachmentItems
+                            .Where(x => x.AttachmentId == searchModel.AttachmentId &&
+                            x.Attachment.EntityName == searchModel.EntityName &&
+                            x.Attachment.FieldName == searchModel.FieldName &&
+                            x.Attachment.EntityId == searchModel.EntityId)
+                            .Count();
+            var pageCount = (int)Math.Ceiling((double)totalCount / searchModel.PageSize);
+            var ResultPage = new List<Models.AttachmentItem.AttachmentItem>();
+            if (pageCount > 0)
+            {
+                searchModel.PageIndex = searchModel.PageIndex > pageCount ? pageCount : searchModel.PageIndex;
+                ResultPage = _DbContext.AttachmentItems
+                                .Where(x => x.AttachmentId == searchModel.AttachmentId &
+                                            x.Attachment.EntityName == searchModel.EntityName &&
+                                            x.Attachment.FieldName == searchModel.FieldName &&
+                                            x.Attachment.EntityId == searchModel.EntityId)
+                                .Skip(searchModel.PageSize * (searchModel.PageIndex - 1))
+                                .Take(searchModel.PageSize)
+                                .Select(x => new AttachmentSystem.Models.AttachmentItem.AttachmentItem
+                                {
+                                    Id = x.Id,
+                                    AttachmentId = x.AttachmentId,
+                                    Description = x.Description,
+                                    FileExtension = x.FileExtension,
+                                    FileName = x.FileName,
+                                    FileSize = x.FileSize,
+                                    UploadDate = x.UploadDate,
+                                    Owner = x.Owner
+                                })
+                                .ToList();
+            }
+            var result = new AttachmentItemPagedList
+            {
+                Items = ResultPage,
+                PageIndex = searchModel.PageIndex,
+                PageSize = searchModel.PageSize,
+                TotalItemsCount = totalCount
+            };
+            return result;
+        }
+        public AttachmentSystem.Models.AttachmentItem.AttachmentItem GetAttachmentItem(GetAttachmentItemModel model)
+        {
+            var query = _DbContext.AttachmentItems
+                            .Where(x => x.Id == model.AttachmentItemId &&
+                                        x.Attachment.EntityName == model.EntityName &&
+                                        x.Attachment.FieldName == model.FieldName &&
+                                        x.Attachment.EntityId == model.EntityId );
+            if (model.IncludeAttachment)
+                query.Include(x => x.Attachment);
+            return query.Select(x => new AttachmentSystem.Models.AttachmentItem.AttachmentItem
+            {
+                Id = x.Id,
+                AttachmentId = x.AttachmentId,
+                Description = x.Description,
+                FileContent = model.IncludeFile ? new MemoryStream(x.FileContent) : null,
+                FileExtension = x.FileExtension,
+                FileName = x.FileName,
+                FileSize = x.FileSize,
+                UploadDate = x.UploadDate,
+                Owner = x.Owner,
+                Attachment = model.IncludeAttachment ? new AttachmentSystem.Models.Attachment
+                {
+                    Id = x.Attachment.Id,
+                    EntityId = x.Attachment.EntityId,
+                    EntityName = x.Attachment.EntityName,
+                    FieldName = x.Attachment.FieldName,
+                } : null
+            })
+            .FirstOrDefault();
+        }
+        public void UploadAttachmentItem(UploadAttachmentItemModel model)
+        {
+            var attachment = _DbContext.Attachments.SingleOrDefault(x => x.Id == model.AttachmentId &&
+                                                                         x.EntityName==model.EntityName &&
+                                                                         x.FieldName == model.FieldName && 
+                                                                         x.EntityId == model.EntityId);
+            foreach (var item in model.FileContent)
+            {
+                var attachmentItem = new AttachmentSystem.Store.SqlServer.Context.AttachmentItem
+                {
+                    AttachmentId = attachment.Id,
+                    Description = model.Description,
+                    UploadDate = DateTime.Now,
+                };
+                using (var attachmentBytes = item.OpenReadStream())
+                using (var memoryStream = new MemoryStream())
+                {
+                    attachmentBytes.CopyTo(memoryStream);
+                    attachmentItem.FileContent = memoryStream.ToArray();
+
+                    attachmentItem.FileExtension = item.ContentType;
+                    attachmentItem.FileName = item.FileName;
+                    attachmentItem.FileSize = (int)(memoryStream.Length);
+
+                }
+                _DbContext.AttachmentItems.Add(attachmentItem).State = EntityState.Added;
+            }
+
+            _DbContext.SaveChanges();
+        }
+        #endregion
+    }
+}
