@@ -88,6 +88,7 @@ namespace AttachmentSystem.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult Download(GetAttachmentItemModel model)
         {
             try
@@ -118,6 +119,7 @@ namespace AttachmentSystem.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult GetInfo(GetAttachmentItemModel model)
         {
             try
