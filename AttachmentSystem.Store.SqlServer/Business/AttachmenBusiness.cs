@@ -1,11 +1,8 @@
 ﻿using AttachmentSystem.Common.Contracts;
 using AttachmentSystem.Common.Extensions;
-using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Common.Models.Business;
-using AttachmentSystem.Models.AttachmentItem;
+using AttachmentSystem.Common.Models.AttachmentItemModels;
+using AttachmentSystem.Common.Models.AttacmentModels;
 using AttachmentSystem.Store.SqlServer.Context;
-using IRISAES.AttachmentModule.Contracts;
-using IRISAES.AttachmentModule.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,13 +32,6 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
         }
 
         #region Methods
-        /// <summary>
-        /// Create new temporary attachment index by given token
-        /// </summary>
-        /// <param name="entityName"></param>
-        /// <param name="fieldName"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public AttachmentModel CreateAttachmentTemporarily(TemporaryAttachmentKeyModel model)
         {
             if (!model.EntityName.HasValue() || !model.FieldName.HasValue() || !model.Token.HasValue())
@@ -125,7 +115,7 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
                             x.Attachment.EntityId == searchModel.EntityId)
                             .Count();
             var pageCount = (int)Math.Ceiling((double)totalCount / searchModel.PageSize);
-            var ResultPage = new List<Models.AttachmentItem.AttachmentItem>();
+            var ResultPage = new List<Common.Models.AttachmentItemModels.AttachmentItem>();
             if (pageCount > 0)
             {
                 searchModel.PageIndex = searchModel.PageIndex > pageCount ? pageCount : searchModel.PageIndex;
@@ -136,7 +126,7 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
                                             x.Attachment.EntityId == searchModel.EntityId)
                                 .Skip(searchModel.PageSize * (searchModel.PageIndex - 1))
                                 .Take(searchModel.PageSize)
-                                .Select(x => new AttachmentSystem.Models.AttachmentItem.AttachmentItem
+                                .Select(x => new Common.Models.AttachmentItemModels.AttachmentItem
                                 {
                                     Id = x.Id,
                                     AttachmentId = x.AttachmentId,
@@ -158,7 +148,7 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
             };
             return result;
         }
-        public AttachmentSystem.Models.AttachmentItem.AttachmentItem GetAttachmentItem(GetAttachmentItemModel model)
+        public Common.Models.AttachmentItemModels.AttachmentItem GetAttachmentItem(AttachmentItemKeyModel model)
         {
             var query = _DbContext.AttachmentItems
                             .Where(x => x.Id == model.AttachmentItemId &&
@@ -166,7 +156,7 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
                                         x.Attachment.FieldName == model.FieldName &&
                                         x.Attachment.EntityId == model.EntityId)
                                          .Include(x => x.Attachment);
-            return query.Select(x => new AttachmentSystem.Models.AttachmentItem.AttachmentItem
+            return query.Select(x => new Common.Models.AttachmentItemModels.AttachmentItem
             {
                 Id = x.Id,
                 AttachmentId = x.AttachmentId,
@@ -176,7 +166,7 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
                 FileSize = x.FileSize,
                 UploadDate = x.UploadDate,
                 Owner = x.Owner,
-                Attachment =  new AttachmentSystem.Models.Attachment
+                Attachment =  new Common.Models.AttacmentModels.Attachment
                 {
                     Id = x.Attachment.Id,
                     EntityId = x.Attachment.EntityId,
@@ -216,33 +206,18 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
 
             _DbContext.SaveChanges();
         }
-
-        public Models.AttachmentItem.AttachmentItem DownloadAttachmentItem(GetAttachmentItemModel model)
+        public AttachmentItemDownloadModel DownloadAttachmentItem(AttachmentItemKeyModel model)
         {
             var query = _DbContext.AttachmentItems
                             .Where(x => x.Id == model.AttachmentItemId &&
                                         x.Attachment.EntityName == model.EntityName &&
                                         x.Attachment.FieldName == model.FieldName &&
-                                        x.Attachment.EntityId == model.EntityId)
-                                         .Include(x => x.Attachment);
-            return query.Select(x => new AttachmentSystem.Models.AttachmentItem.AttachmentItem
+                                        x.Attachment.EntityId == model.EntityId);
+            return query.Select(x => new AttachmentItemDownloadModel
             {
-                Id = x.Id,
-                AttachmentId = x.AttachmentId,
-                Description = x.Description,
                 FileContent = new MemoryStream(x.FileContent) ,
                 FileExtension = x.FileExtension,
                 FileName = x.FileName,
-                FileSize = x.FileSize,
-                UploadDate = x.UploadDate,
-                Owner = x.Owner,
-                Attachment = new AttachmentSystem.Models.Attachment
-                {
-                    Id = x.Attachment.Id,
-                    EntityId = x.Attachment.EntityId,
-                    EntityName = x.Attachment.EntityName,
-                    FieldName = x.Attachment.FieldName,
-                }
             })
             .FirstOrDefault();
         }

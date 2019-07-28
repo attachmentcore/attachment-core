@@ -1,17 +1,15 @@
-﻿using AttachmentSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AttachmentSystem.Common.Models.AttachmentItemModels;
+using AttachmentSystem.Common.Models.AttacmentModels;
 
 namespace AttachmentSystem.Common.Contracts
 {
     public interface IAttachmentAuthorization
     {
-        bool Create(Attachment model);//entityName,fieldName,entityId
-        bool Read(Attachment model);//attachmentId
-        bool Upload(Attachment model);//attachmentId,fileform
-        bool Remove(Attachment model);//attachmentItemId
-        bool Download(Attachment model);//attachmentItemId
-        bool Details(Attachment model);//attachmentItemId
+        bool Create(AttachmentKeyModel model);//entityName,fieldName,entityId
+        bool Read(AttachmentKeyModel model);//attachmentId
+        bool Upload(UploadAttachmentItemModel model);//attachmentId,fileform
+        bool Remove(DeleteAttachmentItemModel model);//attachmentItemId
+        bool Download(AttachmentItemKeyModel model);//attachmentItemId
+        bool Details(AttachmentItemKeyModel model);//attachmentItemId
     }
 }

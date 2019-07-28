@@ -1,66 +1,78 @@
 ﻿using AttachmentSystem.Common.Contracts;
-using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Common.Models.Business;
-using AttachmentSystem.Models.AttachmentItem;
-using IRISAES.AttachmentModule.Contracts;
-using IRISAES.AttachmentModule.Models;
+using AttachmentSystem.Common.Models.AttachmentItemModels;
+using AttachmentSystem.Common.Models.AttacmentModels;
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace AttachmentSystem.Common.Decorators
 {
     public class AuthorizationAttachmnetBusinessDecorator : AttachmentBusinessDecorator
     {
         IAttachmentAuthorization authorization;
-        public AuthorizationAttachmnetBusinessDecorator(IAttachmentBusiness decoratedBusiness,IAttachmentAuthorization authorization) : base(decoratedBusiness)
+        public AuthorizationAttachmnetBusinessDecorator(IAttachmentBusiness decoratedBusiness, IAttachmentAuthorization authorization) : base(decoratedBusiness)
         {
             this.authorization = authorization;
         }
-
+        //create
         public override AttachmentModel CreateAttachment(AttachmentKeyModel model)
         {
+            if (!authorization.Create(model))
+                throw new UnauthorizedAccessException();
             return base.CreateAttachment(model);
         }
-
+        //create
         public override AttachmentModel CreateAttachmentTemporarily(TemporaryAttachmentKeyModel model)
         {
+            if (!authorization.Create(new AttachmentKeyModel { EntityName = model.EntityName, FieldName = model.FieldName }))
+                throw new UnauthorizedAccessException();
             return base.CreateAttachmentTemporarily(model);
         }
-
-        public override void DeleteAttachmentItem(DeleteAttachmentItemModel model)
-        {
-            base.DeleteAttachmentItem(model);
-        }
-
-        public override AttachmentItem DownloadAttachmentItem(GetAttachmentItemModel model)
-        {
-            return base.DownloadAttachmentItem(model);
-        }
-
-        public override AttachmentItemPagedList GetAllAttachmentItems(AttachmentItemSearchModel searchModel)
-        {
-            return base.GetAllAttachmentItems(searchModel);
-        }
-
-        public override AttachmentModel GetAttachmentId(AttachmentKeyModel model)
-        {
-            return base.GetAttachmentId(model);
-        }
-
-        public override AttachmentItem GetAttachmentItem(GetAttachmentItemModel model)
-        {
-            return base.GetAttachmentItem(model);
-        }
-
+        //create
         public override int PreserveAttachment(PreserveAttachmentModel model)
         {
+            if (!authorization.Create(new AttachmentKeyModel { EntityName = model.EntityName, FieldName = model.FieldName, EntityId = model.EntityId }))
+                throw new UnauthorizedAccessException();
             return base.PreserveAttachment(model);
         }
-
+        //delete
+        public override void DeleteAttachmentItem(DeleteAttachmentItemModel model)
+        {
+            if (!authorization.Remove(model))
+                throw new UnauthorizedAccessException();
+            base.DeleteAttachmentItem(model);
+        }
+        //download
+        public override AttachmentItemDownloadModel DownloadAttachmentItem(AttachmentItemKeyModel model)
+        {
+            if (!authorization.Download(model))
+                throw new UnauthorizedAccessException();
+            return base.DownloadAttachmentItem(model);
+        }
+        //read
+        public override AttachmentItemPagedList GetAllAttachmentItems(AttachmentItemSearchModel searchModel)
+        {
+            if (!authorization.Read(new AttachmentKeyModel { EntityName = searchModel.EntityName, FieldName = searchModel.FieldName, EntityId = searchModel.EntityId }))
+                throw new UnauthorizedAccessException();
+            return base.GetAllAttachmentItems(searchModel);
+        }
+        //read
+        public override AttachmentModel GetAttachmentId(AttachmentKeyModel model)
+        {
+            if (!authorization.Read(model))
+                throw new UnauthorizedAccessException();
+            return base.GetAttachmentId(model);
+        }
+        //details
+        public override AttachmentItem GetAttachmentItem(AttachmentItemKeyModel model)
+        {
+            if (!authorization.Details(model))
+                throw new UnauthorizedAccessException();
+            return base.GetAttachmentItem(model);
+        }
+        //upload
         public override void UploadAttachmentItem(UploadAttachmentItemModel model)
         {
+            if (!authorization.Upload(model))
+                throw new UnauthorizedAccessException();
             base.UploadAttachmentItem(model);
         }
     }

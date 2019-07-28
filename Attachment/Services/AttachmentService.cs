@@ -1,6 +1,6 @@
 ﻿using AttachmentSystem.Common.Contracts;
 using AttachmentSystem.Common.Extensions;
-using AttachmentSystem.Common.Models.Attachment;
+using AttachmentSystem.Common.Models.AttacmentModels;
 using System;
 
 namespace AttachmentSystem.Services
@@ -40,7 +40,7 @@ namespace AttachmentSystem.Services
             var token = tokenProvider.GetAttachmentToken();
             if (!token.HasValue())
                 throw new NullReferenceException("Attachment token don't have value");
-            return attachmentBusiness.PreserveAttachment(new Common.Models.Business.PreserveAttachmentModel { EntityName = entityName, FieldName = fieldName, Token = token, EntityId = entityId });
+            return attachmentBusiness.PreserveAttachment(new PreserveAttachmentModel { EntityName = entityName, FieldName = fieldName, Token = token, EntityId = entityId });
         }
     }
 }

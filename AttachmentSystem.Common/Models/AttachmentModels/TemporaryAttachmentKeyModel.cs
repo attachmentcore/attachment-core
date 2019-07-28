@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AttachmentSystem.Common.Models.Attachment
+namespace AttachmentSystem.Common.Models.AttacmentModels
 {
     public class TemporaryAttachmentKeyModel
     {

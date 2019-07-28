@@ -1,10 +1,8 @@
 using AttachmentSystem.Models.Common;
-using IRISAES.AttachmentModule.Contracts;
 using IRISAES.AttachmentModule.Entity;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace IRISAES.AttachmentModule.Models
+namespace AttachmentSystem.Common.Models.AttacmentModels
 {
     public class AttachmentSearchModel : IPagingOptions, ISortingOptions
     {

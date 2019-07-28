@@ -1,10 +1,9 @@
-﻿using AttachmentSystem.Common.Contracts;
-using AttachmentSystem.Common.Decorators;
+﻿using AttachmentSystem.Common.Decorators;
 using AttachmentSystem.Models.Common;
 using AttachmentSystem.SessionProvider.Cookie;
+using AttachmentSystem.Store.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
 
 namespace AttachmentSystem.AttachmentService
 {
@@ -27,6 +26,7 @@ namespace AttachmentSystem.AttachmentService
                 {
                     o.UseSqlServerAttachmenBusiness(connectionString);
                     o.UseCookieSessionProvider();
+                    o.UseNoAuthorizationAttachmenBusiness();
                 });
             return services;
         }

@@ -1,12 +1,9 @@
-using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Models.AttachmentItem;
-using IRISAES.AttachmentModule.Entity;
+using AttachmentSystem.Common.Models.AttacmentModels;
 using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
 
-namespace IRISAES.AttachmentModule.Models
-{ 
+namespace AttachmentSystem.Common.Models.AttachmentItemModels
+{
     public class UploadAttachmentItemModel : AttachmentKeyModel,IAttachmentItemUploadModel
     {
         public int AttachmentId { get; set; }

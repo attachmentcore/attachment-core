@@ -1,13 +1,6 @@
 ﻿using AttachmentSystem.Common.Contracts;
-using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Common.Models.Business;
-using AttachmentSystem.Models.AttachmentItem;
-using IRISAES.AttachmentModule.Contracts;
-using IRISAES.AttachmentModule.Models;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+using AttachmentSystem.Common.Models.AttachmentItemModels;
+using AttachmentSystem.Common.Models.AttacmentModels;
 
 namespace AttachmentSystem.Common.Decorators
 {
@@ -39,7 +32,7 @@ namespace AttachmentSystem.Common.Decorators
         {
             return this.decoratedBusiness.GetAllAttachmentItems(searchModel);
         }
-        public virtual AttachmentItem GetAttachmentItem(GetAttachmentItemModel model)
+        public virtual AttachmentItem GetAttachmentItem(AttachmentItemKeyModel model)
         {
             return this.decoratedBusiness.GetAttachmentItem(model);
         }
@@ -51,8 +44,7 @@ namespace AttachmentSystem.Common.Decorators
         {
             this.decoratedBusiness.DeleteAttachmentItem(model);
         }
-
-        public virtual AttachmentItem DownloadAttachmentItem(GetAttachmentItemModel model)
+        public virtual AttachmentItemDownloadModel DownloadAttachmentItem(AttachmentItemKeyModel model)
         {
             return this.decoratedBusiness.DownloadAttachmentItem(model);
         }

@@ -1,9 +1,7 @@
-﻿using AttachmentSystem.Models;
-using AttachmentSystem.Models.AttachmentItem;
-using AttachmentSystem.Models.Common;
+﻿using AttachmentSystem.Models.Common;
 using System.Collections.Generic;
 
-namespace IRISAES.AttachmentModule.Contracts
+namespace AttachmentSystem.Common.Models.AttachmentItemModels
 {
     public class AttachmentItemPagedList : IPagedList<AttachmentItem>
     {

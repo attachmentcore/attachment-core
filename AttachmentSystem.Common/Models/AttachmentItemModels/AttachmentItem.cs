@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AttachmentSystem.Common.Models.AttacmentModels;
+using System;
 using System.IO;
-using System.Text;
 
-namespace AttachmentSystem.Models.AttachmentItem
+namespace AttachmentSystem.Common.Models.AttachmentItemModels
 {
     public class AttachmentItem
     {

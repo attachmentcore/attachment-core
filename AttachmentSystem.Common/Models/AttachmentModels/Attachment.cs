@@ -1,8 +1,7 @@
-﻿using System;
+﻿using AttachmentSystem.Common.Models.AttachmentItemModels;
 using System.Collections.Generic;
-using System.Text;
 
-namespace AttachmentSystem.Models
+namespace AttachmentSystem.Common.Models.AttacmentModels
 {
     public class Attachment
     {
@@ -10,6 +9,6 @@ namespace AttachmentSystem.Models
         public string EntityName { get; set; }
         public string FieldName { get; set; }
         public string EntityId { get; set; }
-        public virtual ICollection<AttachmentSystem.Models.AttachmentItem.AttachmentItem> AttachmentItems { get; set; }
+        public virtual ICollection<AttachmentItem> AttachmentItems { get; set; }
     }
 }

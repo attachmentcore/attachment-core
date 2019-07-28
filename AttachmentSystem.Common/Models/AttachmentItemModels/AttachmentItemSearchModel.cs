@@ -1,14 +1,12 @@
 using System.Collections.Generic;
-using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Models.AttachmentItem;
+using AttachmentSystem.Common.Models.AttacmentModels;
 using AttachmentSystem.Models.Common;
 using IRISAES.AttachmentModule.Entity;
 
-namespace IRISAES.AttachmentModule.Models
+namespace AttachmentSystem.Common.Models.AttachmentItemModels
 {
-    public class AttachmentItemSearchModel : AttachmentKeyModel,IPagingOptions, ISortingOptions, IAttachmentItemSearchModel
+    public class AttachmentItemSearchModel : AttachmentKeyModel, IPagingOptions, ISortingOptions, IAttachmentItemSearchModel
     {
-
         public int? AttachmentId { get; set; }
         public string FileName { get; set; }
         public string Description { get; set; }

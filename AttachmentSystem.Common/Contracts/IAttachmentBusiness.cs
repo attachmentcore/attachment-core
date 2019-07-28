@@ -1,21 +1,13 @@
-﻿using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Common.Models.Business;
-using AttachmentSystem.Models;
-using AttachmentSystem.Models.AttachmentItem;
-using IRISAES.AttachmentModule.Contracts;
-using IRISAES.AttachmentModule.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using AttachmentSystem.Common.Models.AttachmentItemModels;
+using AttachmentSystem.Common.Models.AttacmentModels;
 
 namespace AttachmentSystem.Common.Contracts
 {
     public interface IAttachmentBusiness
     {
-        //create permission
+        //Create permission
         AttachmentModel CreateAttachmentTemporarily(TemporaryAttachmentKeyModel model);
-        //create permission
+        //Create permission
         int PreserveAttachment(PreserveAttachmentModel model);
         //Create permission
         AttachmentModel CreateAttachment(AttachmentKeyModel model);
@@ -23,12 +15,13 @@ namespace AttachmentSystem.Common.Contracts
         AttachmentModel GetAttachmentId(AttachmentKeyModel model);
         //Read Permission
         AttachmentItemPagedList GetAllAttachmentItems(AttachmentItemSearchModel searchModel);
-        //Read and Download Permission
-        AttachmentItem GetAttachmentItem(GetAttachmentItemModel model);
-        AttachmentItem DownloadAttachmentItem(GetAttachmentItemModel model);
+        //Details Permission
+        AttachmentItem GetAttachmentItem(AttachmentItemKeyModel model);
+        //Download Permission
+        AttachmentItemDownloadModel DownloadAttachmentItem(AttachmentItemKeyModel model);
         //Upload Permission
         void UploadAttachmentItem(UploadAttachmentItemModel attachmentItem);
-        //Remove
+        //Remove Permission
         void DeleteAttachmentItem(DeleteAttachmentItemModel model);
     }
 }

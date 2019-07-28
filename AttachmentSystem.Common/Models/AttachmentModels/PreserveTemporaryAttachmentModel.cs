@@ -1,6 +1,4 @@
-﻿using AttachmentSystem.Common.Models.Attachment;
-
-namespace AttachmentSystem.Common.Models.Business
+﻿namespace AttachmentSystem.Common.Models.AttacmentModels
 {
     public class PreserveAttachmentModel:TemporaryAttachmentKeyModel
     {

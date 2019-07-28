@@ -1,9 +1,8 @@
-using IRISAES.AttachmentModule.Entity;
 using Microsoft.AspNetCore.Http;
 using System;
 
-namespace IRISAES.AttachmentModule.Models
-{ 
+namespace AttachmentSystem.Common.Models.AttachmentItemModels
+{
     public class AttachmentItemViewModel 
     {
         public int? Id { get; set; }

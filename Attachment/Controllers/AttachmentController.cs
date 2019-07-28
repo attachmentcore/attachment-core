@@ -1,18 +1,11 @@
 ﻿using AttachmentSystem.Common.Contracts;
 using AttachmentSystem.Common.Decorators;
 using AttachmentSystem.Common.Extensions;
-using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Common.Models.Business;
-using AttachmentSystem.Models;
-using AttachmentSystem.Models.AttachmentItem;
-using IRISAES.AttachmentModule.Contracts;
-using IRISAES.AttachmentModule.Models;
-using Microsoft.AspNetCore.Cors;
+using AttachmentSystem.Common.Models.AttachmentItemModels;
+using AttachmentSystem.Common.Models.AttacmentModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 using System;
 using System.IO;
-//using System.Net.Http.Headers;
 
 namespace AttachmentSystem.Controllers
 {
@@ -21,9 +14,8 @@ namespace AttachmentSystem.Controllers
         private IAttachmentBusiness attachmentBusiness;
         private IAttachmentSessionProvider tokenProvider;
         #region Constructor
-        public AttachmentController(IAttachmentBusiness attachmentBusiness, IAttachmentSessionProvider tokenProvider, IAttachmentAuthorization authorization)
+        public AttachmentController(AuthorizationAttachmnetBusinessDecorator attachmentBusiness, IAttachmentSessionProvider tokenProvider)
         {
-            this.attachmentBusiness = new AuthorizationAttachmnetBusinessDecorator(attachmentBusiness, authorization);
             this.tokenProvider = tokenProvider;
         }
         #endregion
@@ -89,7 +81,7 @@ namespace AttachmentSystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult Download(GetAttachmentItemModel model)
+        public ActionResult Download(AttachmentItemKeyModel model)
         {
             try
             {
@@ -120,7 +112,7 @@ namespace AttachmentSystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetInfo(GetAttachmentItemModel model)
+        public ActionResult GetInfo(AttachmentItemKeyModel model)
         {
             try
             {

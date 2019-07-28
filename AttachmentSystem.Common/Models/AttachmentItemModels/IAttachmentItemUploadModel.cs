@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace AttachmentSystem.Models.AttachmentItem
+namespace AttachmentSystem.Common.Models.AttachmentItemModels
 {
     public interface IAttachmentItemUploadModel
     {
