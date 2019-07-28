@@ -164,35 +164,33 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
                             .Where(x => x.Id == model.AttachmentItemId &&
                                         x.Attachment.EntityName == model.EntityName &&
                                         x.Attachment.FieldName == model.FieldName &&
-                                        x.Attachment.EntityId == model.EntityId );
-            if (model.IncludeAttachment)
-                query.Include(x => x.Attachment);
+                                        x.Attachment.EntityId == model.EntityId)
+                                         .Include(x => x.Attachment);
             return query.Select(x => new AttachmentSystem.Models.AttachmentItem.AttachmentItem
             {
                 Id = x.Id,
                 AttachmentId = x.AttachmentId,
                 Description = x.Description,
-                FileContent = model.IncludeFile ? new MemoryStream(x.FileContent) : null,
                 FileExtension = x.FileExtension,
                 FileName = x.FileName,
                 FileSize = x.FileSize,
                 UploadDate = x.UploadDate,
                 Owner = x.Owner,
-                Attachment = model.IncludeAttachment ? new AttachmentSystem.Models.Attachment
+                Attachment =  new AttachmentSystem.Models.Attachment
                 {
                     Id = x.Attachment.Id,
                     EntityId = x.Attachment.EntityId,
                     EntityName = x.Attachment.EntityName,
                     FieldName = x.Attachment.FieldName,
-                } : null
+                } 
             })
             .FirstOrDefault();
         }
         public void UploadAttachmentItem(UploadAttachmentItemModel model)
         {
             var attachment = _DbContext.Attachments.SingleOrDefault(x => x.Id == model.AttachmentId &&
-                                                                         x.EntityName==model.EntityName &&
-                                                                         x.FieldName == model.FieldName && 
+                                                                         x.EntityName == model.EntityName &&
+                                                                         x.FieldName == model.FieldName &&
                                                                          x.EntityId == model.EntityId);
             foreach (var item in model.FileContent)
             {
@@ -217,6 +215,36 @@ namespace AttachmentSystem.Store.SqlServer.Businesses
             }
 
             _DbContext.SaveChanges();
+        }
+
+        public Models.AttachmentItem.AttachmentItem DownloadAttachmentItem(GetAttachmentItemModel model)
+        {
+            var query = _DbContext.AttachmentItems
+                            .Where(x => x.Id == model.AttachmentItemId &&
+                                        x.Attachment.EntityName == model.EntityName &&
+                                        x.Attachment.FieldName == model.FieldName &&
+                                        x.Attachment.EntityId == model.EntityId)
+                                         .Include(x => x.Attachment);
+            return query.Select(x => new AttachmentSystem.Models.AttachmentItem.AttachmentItem
+            {
+                Id = x.Id,
+                AttachmentId = x.AttachmentId,
+                Description = x.Description,
+                FileContent = new MemoryStream(x.FileContent) ,
+                FileExtension = x.FileExtension,
+                FileName = x.FileName,
+                FileSize = x.FileSize,
+                UploadDate = x.UploadDate,
+                Owner = x.Owner,
+                Attachment = new AttachmentSystem.Models.Attachment
+                {
+                    Id = x.Attachment.Id,
+                    EntityId = x.Attachment.EntityId,
+                    EntityName = x.Attachment.EntityName,
+                    FieldName = x.Attachment.FieldName,
+                }
+            })
+            .FirstOrDefault();
         }
         #endregion
     }

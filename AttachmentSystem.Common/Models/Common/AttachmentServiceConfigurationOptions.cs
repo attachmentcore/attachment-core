@@ -10,7 +10,7 @@ namespace AttachmentSystem.Models.Common
 {
     public class AttachmentServiceConfigurationOptions
     {
-        public List<BusinessDecorator<IAttachmentBusiness>> BusinessDecorators { get; set; }
+        public List<AttachmentBusinessDecorator> BusinessDecorators { get; set; }
         public IServiceCollection services;
         public AttachmentServiceConfigurationOptions(IServiceCollection services)
         {

@@ -16,8 +16,8 @@ namespace AttachmentSystem.AttachmentService
                 throw new ArgumentNullException();
             var o = new AttachmentServiceConfigurationOptions(services);
             options.Invoke(o);
-
-            //services.Decorate<IAttachmentBusiness,AuthorizationBusinessDecorator>();
+            
+            //services.Decorate<IAttachmentBusiness,AuthorizationAttachmnetBusinessDecorator>();
             return services;
         }
         public static IServiceCollection AddAttachment(this IServiceCollection services, string connectionString)
@@ -27,7 +27,6 @@ namespace AttachmentSystem.AttachmentService
                 {
                     o.UseSqlServerAttachmenBusiness(connectionString);
                     o.UseCookieSessionProvider();
-
                 });
             return services;
         }

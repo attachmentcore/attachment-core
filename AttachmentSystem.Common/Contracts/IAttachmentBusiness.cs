@@ -25,6 +25,7 @@ namespace AttachmentSystem.Common.Contracts
         AttachmentItemPagedList GetAllAttachmentItems(AttachmentItemSearchModel searchModel);
         //Read and Download Permission
         AttachmentItem GetAttachmentItem(GetAttachmentItemModel model);
+        AttachmentItem DownloadAttachmentItem(GetAttachmentItemModel model);
         //Upload Permission
         void UploadAttachmentItem(UploadAttachmentItemModel attachmentItem);
         //Remove

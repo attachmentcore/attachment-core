@@ -1,4 +1,5 @@
 ﻿using AttachmentSystem.Common.Contracts;
+using AttachmentSystem.Common.Decorators;
 using AttachmentSystem.Common.Extensions;
 using AttachmentSystem.Common.Models.Attachment;
 using AttachmentSystem.Common.Models.Business;
@@ -20,9 +21,9 @@ namespace AttachmentSystem.Controllers
         private IAttachmentBusiness attachmentBusiness;
         private IAttachmentSessionProvider tokenProvider;
         #region Constructor
-        public AttachmentController(IAttachmentBusiness attachmentBusiness, IAttachmentSessionProvider tokenProvider)
+        public AttachmentController(IAttachmentBusiness attachmentBusiness, IAttachmentSessionProvider tokenProvider, IAttachmentAuthorization authorization)
         {
-            this.attachmentBusiness = attachmentBusiness;
+            this.attachmentBusiness = new AuthorizationAttachmnetBusinessDecorator(attachmentBusiness, authorization);
             this.tokenProvider = tokenProvider;
         }
         #endregion
@@ -91,9 +92,7 @@ namespace AttachmentSystem.Controllers
         {
             try
             {
-                model.IncludeFile = true;
-                model.IncludeAttachment = false;
-                var item = attachmentBusiness.GetAttachmentItem(model);//check download permission
+                var item = attachmentBusiness.DownloadAttachmentItem(model);//check download permission
                 if (item == null)
                     throw new FileNotFoundException();
                 
@@ -123,8 +122,6 @@ namespace AttachmentSystem.Controllers
         {
             try
             {
-                model.IncludeFile = false;
-                model.IncludeAttachment = false;
                 var attachmentItem = attachmentBusiness.GetAttachmentItem(model);//check details permission
                 if (attachmentItem == null)
                     return NotFound();

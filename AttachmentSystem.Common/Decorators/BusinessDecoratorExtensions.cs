@@ -10,12 +10,13 @@ namespace AttachmentSystem.Common.Decorators
 {
     public static class BusinessDecoratorExtensions
     {
-        public static IServiceCollection Decorate<TBusiness, TDecorator>(this IServiceCollection services) where TBusiness : class where TDecorator : BusinessDecorator<TBusiness>
+        public static IServiceCollection Decorate<TBusiness, TDecorator>(this IServiceCollection services) where TBusiness : IAttachmentBusiness where TDecorator : AttachmentBusinessDecorator
         {
             var serviceRegisterations = services.Where(z => z.ServiceType == typeof(TBusiness)).ToList();
             foreach (var serviceRegisteration in serviceRegisterations)
             {
-                services.Remove(serviceRegisteration);
+                
+                //var service = ActivatorUtilities.CreateInstance(serviceProvider, typeof(TDecorator));
                 if (serviceRegisteration.ImplementationFactory != null)
                 {
                     // Factory-based
@@ -23,7 +24,10 @@ namespace AttachmentSystem.Common.Decorators
                     serviceRegisteration.ServiceType,
                     (p) =>
                     {
-                        return BusinessDecorator<TBusiness>.GetDecorated<TDecorator>(serviceRegisteration.ImplementationFactory.Invoke(p) as TBusiness);
+                        //return (TDecorator)Activator.CreateInstance(typeof(TDecorator), (TBusiness)serviceRegisteration.ImplementationFactory.Invoke(p)); 
+                        var service = ActivatorUtilities.CreateInstance(p, typeof(TDecorator));
+
+                        return service;
                     },
                     serviceRegisteration.Lifetime));
                 }
@@ -34,10 +38,14 @@ namespace AttachmentSystem.Common.Decorators
                     serviceRegisteration.ServiceType,
                     (p) =>
                     {
-                        return BusinessDecorator<TBusiness>.GetDecorated<TDecorator>((TBusiness)Activator.CreateInstance(serviceRegisteration.ImplementationType));
+                        //return (TDecorator)Activator.CreateInstance(typeof(TDecorator), (TBusiness)Activator.CreateInstance(serviceRegisteration.ImplementationType));
+                        var service = ActivatorUtilities.CreateInstance(p, typeof(TDecorator));
+
+                        return service;
                     },
                     serviceRegisteration.Lifetime));
                 }
+                services.Remove(serviceRegisteration);
             }
             return services;
         }

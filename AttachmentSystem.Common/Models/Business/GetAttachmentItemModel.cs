@@ -6,7 +6,7 @@ namespace AttachmentSystem.Common.Models.Business
     {
         public int AttachmentId { get; set; }
         public int AttachmentItemId { get; set; }
-        public bool IncludeFile { get; set; } = false;
-        public bool IncludeAttachment { get; set; } = false;
+        //public bool IncludeFile { get; set; } = false;
+        //public bool IncludeAttachment { get; set; } = false;
     }
 }
