@@ -36,11 +36,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [attachment-icon](..\Icon)
 - [attachment-popup](..\Popup)
 
 ### Graph
 ```mermaid
 graph TD;
+  info-dialog --> attachment-icon
   info-dialog --> attachment-popup
   attachment-table --> info-dialog
   style info-dialog fill:#f9f,stroke:#333,stroke-width:4px

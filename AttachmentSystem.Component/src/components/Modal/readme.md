@@ -43,6 +43,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [attachment-icon](..\Icon)
 - [attachment-popup](..\Popup)
 - [attachment-table](..\Table)
 - context-consumer
@@ -50,15 +51,20 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  attachment-modal --> attachment-icon
   attachment-modal --> attachment-popup
   attachment-modal --> attachment-table
   attachment-modal --> context-consumer
+  attachment-table --> attachment-icon
   attachment-table --> attachment-create
   attachment-table --> delete-comfirmation
   attachment-table --> info-dialog
   attachment-table --> context-consumer
+  attachment-create --> attachment-icon
   attachment-create --> context-consumer
+  delete-comfirmation --> attachment-icon
   delete-comfirmation --> attachment-popup
+  info-dialog --> attachment-icon
   info-dialog --> attachment-popup
   attachment-input --> attachment-modal
   style attachment-modal fill:#f9f,stroke:#333,stroke-width:4px

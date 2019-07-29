@@ -21,7 +21,7 @@ export function AddObjectToUrl(url: string, object: any): string {
   return urlObject.toString();
 }
 function GetBaseUrl(): string {
-  return "https://localhost:44327/";
+  return "";
 }
 export function GetUrl(url: string): string {
   let baseUrl = GetBaseUrl();

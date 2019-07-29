@@ -42,13 +42,7 @@ namespace WebApplication10
                        .AllowAnyHeader()
                        .AllowCredentials();
             }));
-            //services
-            //    .AddAttachment((o) =>
-            //    {
-            //        o.UseSqlServerAttachmenBusiness("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=attachment2;Integrated Security=True;Pooling=False");
-            //        o.UseCookieSessionProvider();
-
-            //    });
+            
             services.AddAttachment();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
