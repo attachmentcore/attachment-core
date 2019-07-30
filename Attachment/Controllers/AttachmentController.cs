@@ -16,6 +16,7 @@ namespace AttachmentSystem.Controllers
         #region Constructor
         public AttachmentController(AuthorizationAttachmnetBusinessDecorator attachmentBusiness, IAttachmentSessionProvider tokenProvider)
         {
+            this.attachmentBusiness = attachmentBusiness;
             this.tokenProvider = tokenProvider;
         }
         #endregion

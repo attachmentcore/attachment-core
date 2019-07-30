@@ -51,6 +51,7 @@ Type: `Promise<AttachmentItemPagedList>`
 
 ### Depends on
 
+- [attachment-icon](..\Icon)
 - [attachment-create](..\Forms)
 - [delete-comfirmation](..\Forms)
 - [info-dialog](..\Forms)
@@ -59,12 +60,16 @@ Type: `Promise<AttachmentItemPagedList>`
 ### Graph
 ```mermaid
 graph TD;
+  attachment-table --> attachment-icon
   attachment-table --> attachment-create
   attachment-table --> delete-comfirmation
   attachment-table --> info-dialog
   attachment-table --> context-consumer
+  attachment-create --> attachment-icon
   attachment-create --> context-consumer
+  delete-comfirmation --> attachment-icon
   delete-comfirmation --> attachment-popup
+  info-dialog --> attachment-icon
   info-dialog --> attachment-popup
   attachment-modal --> attachment-table
   style attachment-table fill:#f9f,stroke:#333,stroke-width:4px

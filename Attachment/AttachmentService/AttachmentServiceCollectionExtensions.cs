@@ -15,8 +15,9 @@ namespace AttachmentSystem.AttachmentService
                 throw new ArgumentNullException();
             var o = new AttachmentServiceConfigurationOptions(services);
             options.Invoke(o);
-            
+
             //services.Decorate<IAttachmentBusiness,AuthorizationAttachmnetBusinessDecorator>();
+            services.AddScoped<AuthorizationAttachmnetBusinessDecorator>();
             return services;
         }
         public static IServiceCollection AddAttachment(this IServiceCollection services, string connectionString)
