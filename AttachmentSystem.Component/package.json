@@ -1,7 +1,7 @@
 {
-  "name": "attachmentsystem",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "name": "attachment-core",
+  "version": "0.0.5",
+  "description": "webcomponent for work with attachment-core module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -23,10 +23,9 @@
   "devDependencies": {
     "@stencil/core": "1.0.0-beta.8",
     "@stencil/sass": "^1.0.1",
-    "bulma": "^0.7.5"
+    "bulma": "^0.7.5",
+    "@stencil/state-tunnel": "^1.0.1"
   },
   "license": "MIT",
-  "dependencies": {
-    "@stencil/state-tunnel": "^1.0.1"
-  }
+  "dependencies": {}
 }
