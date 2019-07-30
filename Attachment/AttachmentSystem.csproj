@@ -4,6 +4,17 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <!--<TargetFramework>netcoreapp2.2</TargetFramework>-->
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <PackageId>attachment-core</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>MohammadReza Rahimi</Authors>
+    <Company />
+    <Product>Attachment Core</Product>
+    <Description>an  module that is in charge of attach file to entities in a ASP.NET Core applications</Description>
+    <PackageProjectUrl>https://github.com/attachmentcore/attachment-core</PackageProjectUrl>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryUrl>https://opensource.org/licenses/MIT</RepositoryUrl>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
