@@ -1,7 +1,7 @@
 import { Component, Method, State, h, Prop, Event, EventEmitter } from '@stencil/core';
-import { GetAllAttachmentItems, Delete, Download } from '../../utils/Services';
+import { AttachmentBusiness } from '../../utils/Services';
 import { AttachmentItemPagedList, AttachmentKeyModel, AttachmentItemKeyModel, AttachmentItem } from '../../utils/Models';
-import Tunnel from '../../utils/AttachmentKeyStateTunnel';
+import Tunnel from '../../utils/AttachmentStateTunnel';
 
 @Component({
   tag: 'attachment-table',
@@ -26,7 +26,7 @@ export class TableComponent {
     this.deleteComfirmation.addEventListener("onAccept", (event:any) => {
       this.onStartLoading.emit({});
 
-        Delete(this.getAttachmentItemKey(event.detail.id)).then(() => {
+      this.AttachmentBusiness.Delete(this.getAttachmentItemKey(event.detail.id)).then(() => {
           this.Refresh().then((data) => {
             this.onEndLoading.emit(data);
           });
@@ -37,6 +37,7 @@ export class TableComponent {
   @Event() onEndLoading: EventEmitter;
   @State() pageItems: AttachmentItemPagedList;
   @Prop() AttachmentKey: AttachmentKeyModel;
+  @Prop() AttachmentBusiness: AttachmentBusiness;
   @Method()
   async Load(pageIndex: number, pageSize: number): Promise<AttachmentItemPagedList> {
     console.log(pageIndex, pageSize);
@@ -44,7 +45,7 @@ export class TableComponent {
       return;
     this.onStartLoading.emit({});
 
-    return GetAllAttachmentItems({
+    return this.AttachmentBusiness.GetAllAttachmentItems({
       attachmentId: this.AttachmentKey.attachmentId,
       entityName: this.AttachmentKey.entityName,
       fieldName: this.AttachmentKey.fieldName,
@@ -78,7 +79,7 @@ export class TableComponent {
     this.deleteComfirmation.open(attachmentItem);
   }
   download(attachmentItem: AttachmentItem) {
-    Download({
+    this.AttachmentBusiness.Download({
       attachmentId: this.AttachmentKey.attachmentId,
       entityName: this.AttachmentKey.entityName,
       fieldName: this.AttachmentKey.fieldName,
@@ -159,5 +160,5 @@ export class TableComponent {
     ];
   }
 }
-Tunnel.injectProps(TableComponent, ['AttachmentKey']);
+Tunnel.injectProps(TableComponent, ['AttachmentKey', 'AttachmentBusiness']);
 

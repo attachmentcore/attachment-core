@@ -1,7 +1,7 @@
 import { Component, Element, h, State, Prop } from '@stencil/core';
-import { GetAttachmentId } from '../../utils/Services';
+import { AttachmentBusiness } from '../../utils/Services';
 import { AttachmentModel, AttachmentKeyModel } from '../../utils/Models';
-import Tunnel from '../../utils/AttachmentKeyStateTunnel';
+import Tunnel from '../../utils/AttachmentStateTunnel';
 
 @Component({
   tag: 'attachment-input',
@@ -12,10 +12,13 @@ export class AttachmentInputComponent {
   modal: HTMLAttachmentModalElement;
   @Element() host: HTMLDivElement;
 
+  attachmentBusiness: AttachmentBusiness;
+
   @Prop() EntityName: string;
   @Prop() FieldName: string;
   @Prop() EntityId: string;
   @Prop() Placeholder: string;
+  @Prop() BaseUrl: string;
   @State() Attachment: AttachmentModel;
   @State() loading: boolean = false;
   @State() error: boolean = false;
@@ -30,7 +33,7 @@ export class AttachmentInputComponent {
     }
     this.loading = true;
 
-    GetAttachmentId(this.EntityName, this.FieldName, this.EntityId).then(response => {
+    this.attachmentBusiness.GetAttachmentId(this.EntityName, this.FieldName, this.EntityId).then(response => {
       this.Attachment = response;
       this.error = false;
       this.loading = false;
@@ -71,7 +74,7 @@ export class AttachmentInputComponent {
       attachmentKey.entityId = this.EntityId;
 
       return (
-        <Tunnel.Provider state={{ AttachmentKey: attachmentKey }} >
+        <Tunnel.Provider state={{ AttachmentKey: attachmentKey, AttachmentBusiness: this.attachmentBusiness }} >
           <attachment-modal ref={el => (this.modal = el)} ></attachment-modal>
         </Tunnel.Provider>
       )
@@ -79,6 +82,7 @@ export class AttachmentInputComponent {
   }
 
   componentDidLoad() {
+    this.attachmentBusiness = new AttachmentBusiness(this.BaseUrl);
     this.getAttachmentId();
   }
 

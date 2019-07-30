@@ -1,0 +1,26 @@
+attachment-modal > attachment-popup > .modal > .modal-card > .modal-card-body.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+attachment-modal > attachment-popup > .modal > .modal-card > .modal-card-head {
+  padding: 5px;
+}
+attachment-modal > attachment-popup > .modal > .modal-card > .modal-card-head .modal-card-title {
+  padding-left: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 18px !important;
+  font-weight: bold;
+}
+attachment-modal > attachment-popup > .modal > .modal-card > .modal-card-foot {
+  padding: 5px;
+}
+attachment-modal > attachment-popup > .modal > .modal-card > .modal-card-foot ul {
+  padding-left: 15px;
+  list-style-type: none;
+}
+attachment-modal > attachment-popup > .modal > .modal-card > .modal-card-foot .button.spinner {
+  margin-left: auto;
+  margin-right: 15px;
+  order: 2;
+}

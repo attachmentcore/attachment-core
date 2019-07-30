@@ -1,0 +1,23 @@
+delete-comfirmation > attachment-popup > .modal > .modal-card > .modal-card-head {
+  padding: 5px;
+}
+delete-comfirmation > attachment-popup > .modal > .modal-card > .modal-card-head .modal-card-title {
+  padding-left: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 18px !important;
+  font-weight: bold;
+}
+delete-comfirmation ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-type: none;
+}
+delete-comfirmation ul b {
+  display: block;
+  margin-right: 0.5em;
+}
+delete-comfirmation ul li {
+  word-break: break-all;
+}

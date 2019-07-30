@@ -3,11 +3,18 @@
 This is a collection of webcomponents for working with attachment core. these components can be used in javascript, Angular 2+, React and Vue frameworks.
 ## Getting Started
 
-To start using this component you must install it
+To start using this component you have two options :
+ 
+1. ##### install
 
 ```bash
-npm i attachment-core
+npm i attachment-core 
 ```
+2. ##### download
+```bash
+npm pack attachment-core
+```
+
 ### Using in Javascript
 
 you can use it in your html without any framework:
@@ -16,6 +23,9 @@ you can use it in your html without any framework:
 <html lang="en">
 <head>
   <script src="~/node_modules/attachment-core/dist/attachmentsystem.js"></script>
+  <!-- or you can use -->
+  <script src="https://unpkg.com/attachment-core/dist/attachmentsystem.js"></script>
+
 </head>
 <body>
   <attachment-input entity-name="entity name" field-name="field name" entity-id="entity id"></attachment-input>

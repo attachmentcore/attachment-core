@@ -1,6 +1,6 @@
 import { Component, h, Method, Element, Prop, State } from '@stencil/core';
 import { AttachmentItemPagedList, AttachmentKeyModel } from '../../utils/Models';
-import Tunnel from '../../utils/AttachmentKeyStateTunnel';
+import Tunnel from '../../utils/AttachmentStateTunnel';
 
 @Component({
   tag: 'attachment-modal',

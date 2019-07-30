@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "attachment-core": "0.0.2"
+    "attachment-core": "0.0.5"
   }
 }

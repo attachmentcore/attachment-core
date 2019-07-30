@@ -11,16 +11,21 @@ import {
   AttachmentItemPagedList,
   AttachmentKeyModel,
 } from './utils/Models';
+import {
+  AttachmentBusiness,
+} from './utils/Services';
 
 
 export namespace Components {
   interface AttachmentCreate {
+    'AttachmentBusiness': AttachmentBusiness;
     'AttachmentKey': AttachmentKeyModel;
   }
   interface AttachmentIcon {
     'IconName': string;
   }
   interface AttachmentInput {
+    'BaseUrl': string;
     'EntityId': string;
     'EntityName': string;
     'FieldName': string;
@@ -36,6 +41,7 @@ export namespace Components {
     'open': () => Promise<void>;
   }
   interface AttachmentTable {
+    'AttachmentBusiness': AttachmentBusiness;
     'AttachmentKey': AttachmentKeyModel;
     'Load': (pageIndex: number, pageSize: number) => Promise<AttachmentItemPagedList>;
     'Refresh': () => Promise<AttachmentItemPagedList>;
@@ -114,6 +120,7 @@ declare global {
 
 declare namespace LocalJSX {
   interface AttachmentCreate extends JSXBase.HTMLAttributes<HTMLAttachmentCreateElement> {
+    'AttachmentBusiness'?: AttachmentBusiness;
     'AttachmentKey'?: AttachmentKeyModel;
     'onOnCreate'?: (event: CustomEvent<any>) => void;
     'onOnRequest'?: (event: CustomEvent<any>) => void;
@@ -122,6 +129,7 @@ declare namespace LocalJSX {
     'IconName'?: string;
   }
   interface AttachmentInput extends JSXBase.HTMLAttributes<HTMLAttachmentInputElement> {
+    'BaseUrl'?: string;
     'EntityId'?: string;
     'EntityName'?: string;
     'FieldName'?: string;
@@ -135,6 +143,7 @@ declare namespace LocalJSX {
     'onOnOpen'?: (event: CustomEvent<any>) => void;
   }
   interface AttachmentTable extends JSXBase.HTMLAttributes<HTMLAttachmentTableElement> {
+    'AttachmentBusiness'?: AttachmentBusiness;
     'AttachmentKey'?: AttachmentKeyModel;
     'onOnEndLoading'?: (event: CustomEvent<any>) => void;
     'onOnStartLoading'?: (event: CustomEvent<any>) => void;
