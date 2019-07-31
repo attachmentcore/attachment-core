@@ -1,10 +1,6 @@
 ﻿using AttachmentSystem.Common.Contracts;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace AttachmentSystem.Common.Decorators
 {

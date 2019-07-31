@@ -3,7 +3,7 @@
 function GetBaseUrl(): string {
   
   var getUrl = window.location;
-  var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] +"/Attachment";
+  var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] +"Attachment";
   return baseUrl;
 }
 //public
@@ -33,6 +33,8 @@ export function GetUrl(url: string, base: string): string {
   let baseUrl = base;
   if (!base)
     baseUrl = GetBaseUrl();
+
+  console.log(baseUrl);
   baseUrl = baseUrl.replace(/\/$/g, '');
   let changedUrl = url.replace(/^\/+/g, '');
   return new String(baseUrl).concat("/", changedUrl);

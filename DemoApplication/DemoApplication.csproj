@@ -8,15 +8,9 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AttachmentCore" Version="0.0.1-alpha" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\AttachmentSystem.Store.SqlServer\AttachmentSystem.Store.SqlServer.csproj" />
-    <ProjectReference Include="..\AttachmentSystem.TokenProvider.Cookie\AttachmentSystem.SessionProvider.Cookie.csproj" />
-    <ProjectReference Include="..\Attachment\AttachmentSystem.csproj" />
   </ItemGroup>
 
 </Project>

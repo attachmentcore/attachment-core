@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property        | Attribute | Description | Type                 | Default     |
-| --------------- | --------- | ----------- | -------------------- | ----------- |
-| `AttachmentKey` | --        |             | `AttachmentKeyModel` | `undefined` |
+| Property             | Attribute | Description | Type                 | Default     |
+| -------------------- | --------- | ----------- | -------------------- | ----------- |
+| `AttachmentBusiness` | --        |             | `AttachmentBusiness` | `undefined` |
+| `AttachmentKey`      | --        |             | `AttachmentKeyModel` | `undefined` |
 
 
 ## Events

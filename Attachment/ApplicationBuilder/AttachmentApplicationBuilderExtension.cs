@@ -19,7 +19,10 @@ namespace AttachmentSystem.ApplicationBuilder
         public static void UseAttachment(this IApplicationBuilder app, AttachmentAppBuilderOptions options)
         {
             if (options == null)
-                throw  new ArgumentNullException();
+            {
+                app.UseAttachment();
+                return;
+            }
             app.MapWhen(options.UseWhen, AttachmentMvcApp);
         }
         private static void AttachmentMvcApp(IApplicationBuilder app)

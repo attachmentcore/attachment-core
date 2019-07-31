@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AttachmentSystem.Models.Common;
-using AttachmentSystem.Store.SqlServer.Businesses;
+﻿using AttachmentSystem.Models.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AttachmentSystem.AttachmentService;
 using AttachmentSystem.ApplicationBuilder;
-using AttachmentSystem.SessionProvider.Cookie;
 
 namespace WebApplication10
 {

@@ -9,6 +9,7 @@
 
 | Property      | Attribute     | Description | Type     | Default     |
 | ------------- | ------------- | ----------- | -------- | ----------- |
+| `BaseUrl`     | `base-url`    |             | `string` | `undefined` |
 | `EntityId`    | `entity-id`   |             | `string` | `undefined` |
 | `EntityName`  | `entity-name` |             | `string` | `undefined` |
 | `FieldName`   | `field-name`  |             | `string` | `undefined` |

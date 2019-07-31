@@ -1,6 +1,6 @@
 {
   "name": "attachment-core",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "webcomponent for work with attachment-core module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
