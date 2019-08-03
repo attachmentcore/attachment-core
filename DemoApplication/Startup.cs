@@ -1,12 +1,12 @@
-﻿using AttachmentSystem.Models.Common;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using AttachmentSystem.AttachmentService;
-using AttachmentSystem.ApplicationBuilder;
+//using AttachmentSystem.Models.Common;
+//using AttachmentSystem.AttachmentService;
+//using AttachmentSystem.ApplicationBuilder;
 
 namespace WebApplication10
 {
@@ -36,7 +36,7 @@ namespace WebApplication10
                        .AllowCredentials();
             }));
             
-            services.AddAttachment();
+            //services.AddAttachment();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -58,10 +58,10 @@ namespace WebApplication10
             app.UseCookiePolicy();
             app.UseCors("AllowAll");
             
-            app.UseAttachment(new AttachmentAppBuilderOptions()
-            {
-                UseWhen = ctx => ctx.Request.Path.Value.StartsWith("Attachment")
-            });
+            //app.UseAttachment(new AttachmentAppBuilderOptions()
+            //{
+            //    UseWhen = ctx => ctx.Request.Path.Value.StartsWith("Attachment")
+            //});
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -8,7 +8,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="AttachmentCore" Version="0.0.1-alpha" />
+    <PackageReference Include="AttachmentCore" Version="0.0.6-alpha" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
