@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <!--<TargetFramework>netcoreapp2.2</TargetFramework>-->
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <PackageId>AttachmentCore</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>MohammadReza Rahimi</Authors>
+    <Company />
+    <Product>Attachment Core</Product>
+    <Description>A  module that is in charge of attach file to entities by specified entity-name field-name and entity-id in a ASP.NET Core applications</Description>
+    <PackageProjectUrl>https://github.com/attachmentcore/attachment-core</PackageProjectUrl>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryUrl>https://opensource.org/licenses/MIT</RepositoryUrl>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AttachmentCore.Common\AttachmentCore.Common.csproj" />
+    <ProjectReference Include="..\AttachmentCore.Store.SqlServer\AttachmentCore.Store.SqlServer.csproj" />
+    <ProjectReference Include="..\AttachmentCore.TokenProvider.Cookie\AttachmentCore.SessionProvider.Cookie.csproj" />
+  </ItemGroup>
+</Project>

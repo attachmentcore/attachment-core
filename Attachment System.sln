@@ -1,40 +1,40 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.705
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentSystem", "Attachment\AttachmentSystem.csproj", "{C4A0FB4A-CA27-482A-B92D-F6FB0EDC2B3A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentSystem.Store.SqlServer", "AttachmentSystem.Store.SqlServer\AttachmentSystem.Store.SqlServer.csproj", "{01BC3E97-6442-43CD-8B00-2A7D771D3C05}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentSystem.UnitTest", "AttachmentSystem.Test\AttachmentSystem.UnitTest.csproj", "{95E472B7-F3C6-43E7-A588-F19C55B0D042}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentSystem.SessionProvider.Cookie", "AttachmentSystem.TokenProvider.Cookie\AttachmentSystem.SessionProvider.Cookie.csproj", "{2EE33982-99E5-47B8-B292-30421400CD29}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApplication", "DemoApplication\DemoApplication.csproj", "{E9AB5CA6-FD00-440D-A4EF-BB25A033C670}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AttachmentSystem.Component", "AttachmentSystem.Component\", "{36B482A8-45A9-4774-ACB3-D31047015778}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AttachmentCore.Component", "AttachmentCore.Component\", "{BA2BDA26-DC6E-4B79-A47D-BF6BB4F2743B}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_2988"
-		Debug.AspNetCompiler.PhysicalPath = "AttachmentSystem.Component\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2988\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_2192"
+		Debug.AspNetCompiler.PhysicalPath = "AttachmentCore.Component\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2192\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_2988"
-		Release.AspNetCompiler.PhysicalPath = "AttachmentSystem.Component\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2988\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_2192"
+		Release.AspNetCompiler.PhysicalPath = "AttachmentCore.Component\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2192\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "2988"
-		SlnRelativePath = "AttachmentSystem.Component\"
+		VWDPort = "2192"
+		SlnRelativePath = "AttachmentCore.Component\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttachmentSystem.Common", "AttachmentSystem.Common\AttachmentSystem.Common.csproj", "{E2D9422F-0776-4E50-9C37-99629888C4EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentCore", "AttachmentCore\AttachmentCore.csproj", "{235FFD77-F783-405B-B1EC-B7BC62DF032E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentCore.Common", "AttachmentCore.Common\AttachmentCore.Common.csproj", "{CC5D28AC-D1A9-4DB0-B318-83EB2B2ED8DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentCore.Store.SqlServer", "AttachmentCore.Store.SqlServer\AttachmentCore.Store.SqlServer.csproj", "{592A9F5A-9DBA-46C7-BA98-19C55D3D7A1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentCore.UnitTest", "AttachmentCore.Test\AttachmentCore.UnitTest.csproj", "{1430ADA5-D861-4FE4-AB38-78AE899A5144}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttachmentCore.SessionProvider.Cookie", "AttachmentCore.TokenProvider.Cookie\AttachmentCore.SessionProvider.Cookie.csproj", "{0B731171-04F7-4D4C-ADA9-842B5D93AE09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,34 +42,34 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C4A0FB4A-CA27-482A-B92D-F6FB0EDC2B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4A0FB4A-CA27-482A-B92D-F6FB0EDC2B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4A0FB4A-CA27-482A-B92D-F6FB0EDC2B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4A0FB4A-CA27-482A-B92D-F6FB0EDC2B3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01BC3E97-6442-43CD-8B00-2A7D771D3C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01BC3E97-6442-43CD-8B00-2A7D771D3C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01BC3E97-6442-43CD-8B00-2A7D771D3C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01BC3E97-6442-43CD-8B00-2A7D771D3C05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95E472B7-F3C6-43E7-A588-F19C55B0D042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95E472B7-F3C6-43E7-A588-F19C55B0D042}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95E472B7-F3C6-43E7-A588-F19C55B0D042}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95E472B7-F3C6-43E7-A588-F19C55B0D042}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EE33982-99E5-47B8-B292-30421400CD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EE33982-99E5-47B8-B292-30421400CD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EE33982-99E5-47B8-B292-30421400CD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EE33982-99E5-47B8-B292-30421400CD29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9AB5CA6-FD00-440D-A4EF-BB25A033C670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9AB5CA6-FD00-440D-A4EF-BB25A033C670}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9AB5CA6-FD00-440D-A4EF-BB25A033C670}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9AB5CA6-FD00-440D-A4EF-BB25A033C670}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36B482A8-45A9-4774-ACB3-D31047015778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36B482A8-45A9-4774-ACB3-D31047015778}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36B482A8-45A9-4774-ACB3-D31047015778}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{36B482A8-45A9-4774-ACB3-D31047015778}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{E2D9422F-0776-4E50-9C37-99629888C4EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2D9422F-0776-4E50-9C37-99629888C4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2D9422F-0776-4E50-9C37-99629888C4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2D9422F-0776-4E50-9C37-99629888C4EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA2BDA26-DC6E-4B79-A47D-BF6BB4F2743B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA2BDA26-DC6E-4B79-A47D-BF6BB4F2743B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA2BDA26-DC6E-4B79-A47D-BF6BB4F2743B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA2BDA26-DC6E-4B79-A47D-BF6BB4F2743B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{235FFD77-F783-405B-B1EC-B7BC62DF032E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{235FFD77-F783-405B-B1EC-B7BC62DF032E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{235FFD77-F783-405B-B1EC-B7BC62DF032E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{235FFD77-F783-405B-B1EC-B7BC62DF032E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC5D28AC-D1A9-4DB0-B318-83EB2B2ED8DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC5D28AC-D1A9-4DB0-B318-83EB2B2ED8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC5D28AC-D1A9-4DB0-B318-83EB2B2ED8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC5D28AC-D1A9-4DB0-B318-83EB2B2ED8DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592A9F5A-9DBA-46C7-BA98-19C55D3D7A1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592A9F5A-9DBA-46C7-BA98-19C55D3D7A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592A9F5A-9DBA-46C7-BA98-19C55D3D7A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592A9F5A-9DBA-46C7-BA98-19C55D3D7A1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1430ADA5-D861-4FE4-AB38-78AE899A5144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1430ADA5-D861-4FE4-AB38-78AE899A5144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1430ADA5-D861-4FE4-AB38-78AE899A5144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1430ADA5-D861-4FE4-AB38-78AE899A5144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B731171-04F7-4D4C-ADA9-842B5D93AE09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B731171-04F7-4D4C-ADA9-842B5D93AE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B731171-04F7-4D4C-ADA9-842B5D93AE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B731171-04F7-4D4C-ADA9-842B5D93AE09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
