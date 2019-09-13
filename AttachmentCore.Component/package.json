@@ -1,7 +1,8 @@
 {
   "name": "attachment-core",
-  "version": "0.0.8",
+  "version": "0.0.9-alpha",
   "description": "webcomponent for work with attachment-core module",
+  "homepage": "https://github.com/attachmentcore/attachment-core/tree/master/AttachmentCore.Component",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",

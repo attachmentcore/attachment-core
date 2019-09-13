@@ -38,8 +38,7 @@ namespace WebApplication10
             }));
 
 
-            services.AddAttachment();
-                //.UseAuthorizationHandler<AttachmentAuthorization>();
+            services.AddAttachment()
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

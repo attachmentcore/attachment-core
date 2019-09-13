@@ -7,33 +7,112 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-create.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-icon.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-input.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-modal.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-popup.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-table.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachmentsystem-9dcd5be0.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-7b2b5b59.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-8899376d.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-e9c61c26.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\context-consumer.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\css-shim-229ebf7a-229ebf7a.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\delete-comfirmation.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\dom-a0c82e31-a0c82e31.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\info-dialog.entry.js" />
-    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\shadow-css-984bac74-549b16dd.js" />
+    <None Include="wwwroot\js\attachmentsystem.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-create.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-icon.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-input.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-modal.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-popup.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-table.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachmentsystem-9dcd5be0.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachmentsystem.esm.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachmentsystem.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-7b2b5b59.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-8899376d.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-edcd45f1.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\context-consumer.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\css-shim-229ebf7a-229ebf7a.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\delete-comfirmation.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\dom-a0c82e31-a0c82e31.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\info-dialog.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-1563a874.system.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-1d9e67da.system.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-229ebf7a.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-549b16dd.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-6298bbd6.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-8a412c94.system.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-971uqasg.system.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-a0c82e31.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-a8fc097f.system.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-f57d4852.system.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\p-rgk2kc6p.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\attachmentsystem\shadow-css-984bac74-549b16dd.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\attachment-create_9.cjs.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\attachmentsystem-da3179ad.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\attachmentsystem.cjs.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\css-shim-229ebf7a-56ba83b5.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\dom-a0c82e31-d4621515.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\index.cjs.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\loader.cjs.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\cjs\shadow-css-984bac74-b2177096.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Forms\create-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Forms\delete-comfirmation-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Forms\info-dialog-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Icon\icon-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Input\input-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Modal\modal-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Popup\popup-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\components\Table\table-component.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\index.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\utils\AttachmentStateTunnel.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\utils\Models.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\utils\Services.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\collection\utils\utils.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\attachment-create_9.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\attachmentsystem-1c042d9f.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\attachmentsystem.mjs" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\css-shim-229ebf7a-229ebf7a.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\dom-a0c82e31-a0c82e31.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\index.mjs" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\attachment-create_9.entry.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\attachmentsystem-1c042d9f.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\attachmentsystem.mjs" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\css-shim-229ebf7a-229ebf7a.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\dom-a0c82e31-a0c82e31.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\index.mjs" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\loader.mjs" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\legacy\shadow-css-984bac74-549b16dd.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\loader.mjs" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\polyfills\core-js.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\polyfills\css-shim.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\polyfills\dom.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\polyfills\es5-html-element.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\polyfills\index.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\polyfills\system.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\esm\shadow-css-984bac74-549b16dd.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\index.js" />
+    <None Include="wwwroot\lib\attachment-core\dist\index.mjs" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
   </ItemGroup>
-
-
   <ItemGroup>
+    <PackageReference Include="AttachmentCore" Version="0.0.9-alpha" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
-
-
   <ItemGroup>
-    <ProjectReference Include="..\AttachmentCore\AttachmentCore.csproj" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Forms\create-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Forms\delete-comfirmation-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Forms\info-dialog-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Icon\icon-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Input\input-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Modal\modal-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Popup\popup-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\components\Table\table-component.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\index.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\stencil.core.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\utils\AttachmentStateTunnel.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\utils\Models.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\utils\Services.d.ts" />
+    <TypeScriptCompile Include="wwwroot\lib\attachment-core\dist\types\utils\utils.d.ts" />
   </ItemGroup>
-
 </Project>

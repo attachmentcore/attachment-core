@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <!--<TargetFramework>netcoreapp2.2</TargetFramework>-->
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <PackageId>AttachmentCore</PackageId>
-    <Version>0.0.1</Version>
+    <PackageId>attachment-core</PackageId>
+    <Version>0.0.8-alpha</Version>
     <Authors>MohammadReza Rahimi</Authors>
     <Company />
-    <Product>Attachment Core</Product>
+    <Product>attachment-core</Product>
     <Description>A  module that is in charge of attach file to entities by specified entity-name field-name and entity-id in a ASP.NET Core applications</Description>
     <PackageProjectUrl>https://github.com/attachmentcore/attachment-core</PackageProjectUrl>
     <Copyright>MIT</Copyright>
