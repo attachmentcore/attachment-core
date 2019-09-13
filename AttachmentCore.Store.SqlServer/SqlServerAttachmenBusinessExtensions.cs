@@ -1,4 +1,5 @@
 ﻿using AttachmentCore.Common.Contracts;
+using AttachmentCore.Common.Models.Configuration;
 using AttachmentCore.Common.Models.Shared;
 using AttachmentCore.Store.SqlServer.Business;
 using Microsoft.Extensions.DependencyInjection;

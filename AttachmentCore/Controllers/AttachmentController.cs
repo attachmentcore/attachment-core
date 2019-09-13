@@ -3,7 +3,6 @@ using AttachmentCore.Common.Decorators;
 using AttachmentCore.Common.Extensions;
 using AttachmentCore.Common.Models.AttachmentItemModels;
 using AttachmentCore.Common.Models.AttachmentModels;
-using AttachmentSystem.Common.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
@@ -16,7 +15,7 @@ namespace AttachmentCore.Controllers
         private IAttachmentSessionProvider tokenProvider;
         #region Constructor
         public AttachmentController(
-            AuthorizationAttachmnetBusinessDecorator attachmentBusiness,
+            IAttachmentBusiness attachmentBusiness,
             IAttachmentSessionProvider tokenProvider)
         {
             this.attachmentBusiness = attachmentBusiness;
@@ -30,14 +29,15 @@ namespace AttachmentCore.Controllers
         {
             try
             {
-                if (!model.FieldName.HasValue() || !model.EntityName.HasValue())
-                    throw new ArgumentNullException();
+                model.CheckArgumentIsNull(nameof(model));
+                model.FieldName.CheckArgumentIsNullOrEmpty(nameof(model.FieldName));
+                model.EntityName.CheckArgumentIsNullOrEmpty(nameof(model.EntityName));
+
                 if (model.EntityId.HasValue())
                 {
-                    var attachmentKeyModel = new AttachmentKeyModel { EntityName = model.EntityName, FieldName = model.FieldName, EntityId = model.EntityId };
-                    var attachmentId = attachmentBusiness.GetAttachmentId(attachmentKeyModel);//check read permission
+                    var attachmentId = attachmentBusiness.GetAttachmentId(model);//check read permission
                     if (attachmentId == null)
-                        return Ok(attachmentBusiness.CreateAttachment(attachmentKeyModel));//check create permission
+                        return Ok(attachmentBusiness.CreateAttachment(model));//check create permission
                     return Ok(attachmentId);
                 }
                 else
@@ -54,7 +54,6 @@ namespace AttachmentCore.Controllers
                 return BadRequest();
             }
         }
-
         [HttpGet]
         public ActionResult GetAllAttachmentItems(AttachmentItemSearchModel searchModel)
         {
@@ -65,7 +64,7 @@ namespace AttachmentCore.Controllers
                     return NotFound();
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return BadRequest();
             }
@@ -83,7 +82,6 @@ namespace AttachmentCore.Controllers
                 return BadRequest();
             }
         }
-
         [HttpGet]
         public ActionResult Download(AttachmentItemKeyModel model)
         {
@@ -91,7 +89,7 @@ namespace AttachmentCore.Controllers
             {
                 var item = attachmentBusiness.DownloadAttachmentItem(model);//check download permission
                 if (item == null)
-                    throw new FileNotFoundException();
+                    return NotFound();
 
                 return File(item.FileContent, item.FileExtension, item.FileName);
             }
@@ -100,7 +98,6 @@ namespace AttachmentCore.Controllers
                 return BadRequest();
             }
         }
-
         [HttpDelete]
         public ActionResult Delete(DeleteAttachmentItemModel model)
         {
@@ -114,7 +111,6 @@ namespace AttachmentCore.Controllers
                 return BadRequest();
             }
         }
-
         [HttpGet]
         public ActionResult GetInfo(AttachmentItemKeyModel model)
         {

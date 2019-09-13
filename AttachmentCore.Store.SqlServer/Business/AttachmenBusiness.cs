@@ -3,7 +3,6 @@ using AttachmentCore.Common.Extensions;
 using AttachmentCore.Common.Models.AttachmentItemModels;
 using AttachmentCore.Common.Models.AttachmentModels;
 using AttachmentCore.Store.SqlServer.Context;
-using AttachmentSystem.Common.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

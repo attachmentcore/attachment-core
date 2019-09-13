@@ -8,7 +8,7 @@ export class AttachmentBusiness {
   Upload(model: AttachmentItemUploadModel): Promise<Response> {
     if (!model)
       throw new Error("passed AttachmentItemUploadModel could not be null");
-
+    console.log(model);
     var form_data = new FormData();
     form_data.append("attachmentId", model.attachmentId.toString());
     form_data.append("entityName", model.entityName.toString());

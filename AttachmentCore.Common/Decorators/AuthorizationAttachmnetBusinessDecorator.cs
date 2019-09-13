@@ -5,76 +5,78 @@ using System;
 
 namespace AttachmentCore.Common.Decorators
 {
-    public class AuthorizationAttachmnetBusinessDecorator : AttachmentBusinessDecorator
+    public class AuthorizationAttachmnetBusinessDecorator : IAttachmentBusiness
     {
-        IAttachmentAuthorization authorization;
-        public AuthorizationAttachmnetBusinessDecorator(IAttachmentBusiness decoratedBusiness, IAttachmentAuthorization authorization) : base(decoratedBusiness)
+        IAttachmentBusiness _business;
+        IAttachmentAuthorization _authorization;
+        public AuthorizationAttachmnetBusinessDecorator(IAttachmentBusiness business, IAttachmentAuthorization authorization) 
         {
-            this.authorization = authorization;
+            this._business = business;
+            this._authorization = authorization;
         }
 
         //create
-        public override AttachmentModel CreateAttachment(AttachmentKeyModel model)
+        public AttachmentModel CreateAttachment(AttachmentKeyModel model)
         {
-            if (!authorization.Create(model))
+            if (!_authorization.Create(model))
                 throw new UnauthorizedAccessException();
-            return base.CreateAttachment(model);
+            return _business.CreateAttachment(model);
         }
         //create
-        public override AttachmentModel CreateAttachmentTemporarily(TemporaryAttachmentKeyModel model)
+        public AttachmentModel CreateAttachmentTemporarily(TemporaryAttachmentKeyModel model)
         {
-            if (!authorization.Create(new AttachmentKeyModel { EntityName = model.EntityName, FieldName = model.FieldName }))
+            if (!_authorization.Create(new AttachmentKeyModel { EntityName = model.EntityName, FieldName = model.FieldName }))
                 throw new UnauthorizedAccessException();
-            return base.CreateAttachmentTemporarily(model);
+            return _business.CreateAttachmentTemporarily(model);
         }
         //create
-        public override int PreserveAttachment(PreserveAttachmentModel model)
+        public int PreserveAttachment(PreserveAttachmentModel model)
         {
-            if (!authorization.Create(new AttachmentKeyModel { EntityName = model.EntityName, FieldName = model.FieldName, EntityId = model.EntityId }))
+            if (!_authorization.Create(new AttachmentKeyModel { EntityName = model.EntityName, FieldName = model.FieldName, EntityId = model.EntityId }))
                 throw new UnauthorizedAccessException();
-            return base.PreserveAttachment(model);
+            return _business.PreserveAttachment(model);
         }
         //delete
-        public override void DeleteAttachmentItem(DeleteAttachmentItemModel model)
+        public void DeleteAttachmentItem(DeleteAttachmentItemModel model)
         {
-            if (!authorization.Remove(model))
+            if (!_authorization.Remove(model))
                 throw new UnauthorizedAccessException();
-            base.DeleteAttachmentItem(model);
+            _business.DeleteAttachmentItem(model);
         }
         //download
-        public override AttachmentItemDownloadModel DownloadAttachmentItem(AttachmentItemKeyModel model)
+        public AttachmentItemDownloadModel DownloadAttachmentItem(AttachmentItemKeyModel model)
         {
-            if (!authorization.Download(model))
+            if (!_authorization.Download(model))
                 throw new UnauthorizedAccessException();
-            return base.DownloadAttachmentItem(model);
+            return _business.DownloadAttachmentItem(model);
         }
         //read
-        public override AttachmentItemPagedList GetAllAttachmentItems(AttachmentItemSearchModel searchModel)
+        public AttachmentItemPagedList GetAllAttachmentItems(AttachmentItemSearchModel searchModel)
         {
-            if (!authorization.Read(new AttachmentKeyModel { EntityName = searchModel.EntityName, FieldName = searchModel.FieldName, EntityId = searchModel.EntityId }))
+            if (!_authorization.Read(new AttachmentKeyModel { EntityName = searchModel.EntityName, FieldName = searchModel.FieldName, EntityId = searchModel.EntityId }))
                 throw new UnauthorizedAccessException();
-            return base.GetAllAttachmentItems(searchModel);
+            return _business.GetAllAttachmentItems(searchModel);
         }
         //read
-        public override AttachmentModel GetAttachmentId(AttachmentKeyModel model)
+        public AttachmentModel GetAttachmentId(AttachmentKeyModel model)
         {
-            if (!authorization.Read(model))
+            if (!_authorization.Read(model))
                 throw new UnauthorizedAccessException();
-            return base.GetAttachmentId(model);
+            return _business.GetAttachmentId(model);
         }
         //details
-        public override AttachmentItem GetAttachmentItem(AttachmentItemKeyModel model)
+        public AttachmentItem GetAttachmentItem(AttachmentItemKeyModel model)
         {
-            if (!authorization.Details(model))
+            if (!_authorization.Details(model))
                 throw new UnauthorizedAccessException();
-            return base.GetAttachmentItem(model);
+            return _business.GetAttachmentItem(model);
         }
         //upload
-        public override void UploadAttachmentItem(UploadAttachmentItemModel model)
+        public void UploadAttachmentItem(UploadAttachmentItemModel model)
         {
-            if (!authorization.Upload(model))
+            if (!_authorization.Upload(model))
                 throw new UnauthorizedAccessException();
-            base.UploadAttachmentItem(model);
+            _business.UploadAttachmentItem(model);
         }
     }
 }

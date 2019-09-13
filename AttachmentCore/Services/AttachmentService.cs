@@ -1,7 +1,6 @@
 ﻿using AttachmentCore.Common.Contracts;
 using AttachmentCore.Common.Extensions;
 using AttachmentCore.Common.Models.AttachmentModels;
-using AttachmentSystem.Common.Extensions;
 using System;
 
 namespace AttachmentCore.Services

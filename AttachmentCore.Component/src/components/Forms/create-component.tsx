@@ -40,7 +40,6 @@ export class CreateComponent {
 
     if (!this.AttachmentKey)
       throw Error("AttachmentId don't have value");
-
     let model = new AttachmentItemUploadModel();
     model.attachmentId = this.AttachmentKey.attachmentId;
     model.entityName = this.AttachmentKey.entityName;
@@ -64,7 +63,7 @@ export class CreateComponent {
       <div class="create-form field is-grouped">
         <p class="control is-expanded">
           <input class="input" type="file" name="files" multiple id="file" ref={el => this.fileInput = el} onChange={($event: any) => { this.files = $event.target.files; }} />
-          <input class="input" type="text" placeholder="Description" ref={el => this.descriptionInput = el} value={this.description} onInput={($event: any) => this.description = $event.target.value} />
+          <input class="input" type="text" placeholder="Description" ref={el => this.descriptionInput = el} value={this.description} onInput={($event: any) => { this.description = $event.target.value;  }} />
         </p>
         {this.renderCreate()}
       </div>

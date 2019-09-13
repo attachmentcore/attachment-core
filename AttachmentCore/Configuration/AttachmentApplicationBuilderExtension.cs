@@ -1,4 +1,4 @@
-﻿using AttachmentCore.Common.Models.Shared;
+﻿using AttachmentCore.Common.Models.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,7 +20,7 @@ namespace AttachmentCore.Configuration
                 ctx.Request.Path.Value.StartsWith("Attachment"), AttachmentMvcApp);
         }
         /// <summary>
-        /// configure attachment apis route by accepting a filter expression
+        /// configure routes of attachment apis  by accepting a filter expression
         /// </summary>
         /// <param name="options"></param>
         public static void UseAttachment(this IApplicationBuilder app, AttachmentAppBuilderOptions options)

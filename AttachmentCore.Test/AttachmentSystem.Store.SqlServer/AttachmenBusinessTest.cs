@@ -1,9 +1,6 @@
+using AttachmentCore.Common.Models.AttachmentModels;
 using AttachmentCore.Store.SqlServer.Business;
 using AttachmentCore.Store.SqlServer.Context;
-using AttachmentSystem.Common.Models.Attachment;
-using AttachmentSystem.Controllers;
-using IRISAES.AttachmentModule.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;

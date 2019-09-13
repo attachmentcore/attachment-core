@@ -1,0 +1,26 @@
+{
+  "entries": [
+    "components\\Forms\\delete-comfirmation-component.js",
+    "components\\Icon\\icon-component.js",
+    "components\\Input\\input-component.js",
+    "components\\Forms\\create-component.js",
+    "components\\Forms\\info-dialog-component.js",
+    "components\\Popup\\popup-component.js",
+    "components\\Table\\table-component.js",
+    "components\\Modal\\modal-component.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.0.0-beta.8",
+    "typescriptVersion": "3.5.1"
+  },
+  "collections": [
+    {
+      "name": "@stencil/state-tunnel",
+      "tags": [
+        "context-consumer"
+      ]
+    }
+  ],
+  "bundles": []
+}

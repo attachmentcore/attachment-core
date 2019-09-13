@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -6,10 +6,34 @@
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-create.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-icon.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-input.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-modal.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-popup.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachment-table.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\attachmentsystem-9dcd5be0.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-7b2b5b59.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-8899376d.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\chunk-e9c61c26.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\context-consumer.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\css-shim-229ebf7a-229ebf7a.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\delete-comfirmation.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\dom-a0c82e31-a0c82e31.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\info-dialog.entry.js" />
+    <Content Include="wwwroot\lib\attachment-core\dist\attachmentsystem\shadow-css-984bac74-549b16dd.js" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\AttachmentCore\AttachmentCore.csproj" />
   </ItemGroup>
 
 </Project>

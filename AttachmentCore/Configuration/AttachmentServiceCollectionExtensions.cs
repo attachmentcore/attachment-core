@@ -1,5 +1,7 @@
-﻿using AttachmentCore.Common.Decorators;
-using AttachmentCore.Common.Models.Shared;
+﻿using AttachmentCore.Common.Contracts;
+using AttachmentCore.Common.Decorators;
+using AttachmentCore.Common.Models.Configuration;
+using AttachmentCore.Configuration;
 using AttachmentCore.SessionProvider.Cookie;
 using AttachmentCore.Store.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,33 +11,37 @@ namespace AttachmentCore.Configuration
 {
     public static class AttachmentServiceCollectionExtensions
     {
-        public static IServiceCollection AddAttachment(this IServiceCollection services, Action<AttachmentServiceConfigurationOptions> options)
+        /// <summary>
+        /// configure attachment by getting 'AttachmentServiceConfigurationOptions' object
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static AttachmentServiceConfigurationOptions AddAttachment(this IServiceCollection services, Action<AttachmentServiceConfigurationOptions> options)
         {
             if (options == null)
                 throw new ArgumentNullException();
             var o = new AttachmentServiceConfigurationOptions(services);
             options.Invoke(o);
-
-            //services.Decorate<IAttachmentBusiness,AuthorizationAttachmnetBusinessDecorator>();
-            services.AddScoped<AuthorizationAttachmnetBusinessDecorator>();
-            return services;
-        }
-        public static IServiceCollection AddAttachment(this IServiceCollection services, string connectionString)
-        {
-            services
-                .AddAttachment((o) =>
-                {
-                    o.UseSqlServerAttachmenBusiness(connectionString);
-                    o.UseCookieSessionProvider();
-                    o.UseNoAuthorizationAttachmenBusiness();
-                });
-            return services;
+            return new AttachmentServiceConfigurationOptions(services);
         }
         /// <summary>
-        /// configure attachment by using default connection string
+        /// configure attachment by getting connection string 
+        /// </summary>
+        public static AttachmentServiceConfigurationOptions AddAttachment(this IServiceCollection services, string connectionString)
+        {
+            return services
+                    .AddAttachment((o) =>
+                    {
+                        o.UseSqlServerAttachmenBusiness(connectionString);
+                        o.UseCookieSessionProvider();
+                    });
+        }
+        /// <summary>
+        /// configure attachment by using default connection string as following
         /// "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=attachmentDB;Integrated Security=True;Pooling=False"
         /// </summary>
-        public static IServiceCollection AddAttachment(this IServiceCollection services)
+        public static AttachmentServiceConfigurationOptions AddAttachment(this IServiceCollection services)
         {
             return services.AddAttachment("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=attachmentDB;Integrated Security=True;Pooling=False");
         }
